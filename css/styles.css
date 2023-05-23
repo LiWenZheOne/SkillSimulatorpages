@@ -1,0 +1,75 @@
+body {
+    background-image: url('../images/webbackgroup1.png');
+}
+  
+.icon-container {
+  position: absolute;  
+  /* 其他样式设置 */
+}
+
+#gameboard {
+    position: relative;
+    /* 其他属性... */
+}
+
+.game-icon {
+    position: absolute;
+}
+
+#point-info-card {
+  opacity: 0.7;
+}
+
+#skill-info-card {
+  position: absolute;
+  background-color: #808080;
+  padding: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  opacity: 0.7;
+  color: white;
+}
+
+.user-select-none {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
+  }
+  
+  @keyframes iconClickAnimation {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1.5);
+      opacity: 0;
+    }
+  }
+  
+  .game-icon.active {
+    animation: iconClickAnimation 0.5s forwards; 
+    pointer-events: none; /* 禁止被点击的图标接收鼠标事件 */
+  }
+  
+  @keyframes flash {
+    0% { filter: brightness(1); }
+    50% { filter: brightness(100); }
+    100% { filter: brightness(1); }
+  }
+  
+  .flash {
+    animation: flash 0.2s;
+  }
+
+  @keyframes flash-red { 
+    0% { filter: brightness(1); }
+    50% { filter: brightness(0) saturate(100%) invert(12%) sepia(77%) saturate(7033%)  ; }
+    100% { filter: brightness(1);  }
+  }
+  
+  .fail-animation {
+    animation: flash-red 0.2s;
+  }
+  
+  
