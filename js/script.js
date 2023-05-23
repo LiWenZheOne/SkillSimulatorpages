@@ -129,14 +129,14 @@ function updateSkillIcons() {
         if (currentLevel === 0) {
           if (skill.prerequisite && skills[skill.prerequisite].currentLevel > 0) {
             // 修改图片路径为 /images/skill1/+原文件名
-            skillElements[i].src = 'images/skill1/' + skillElements[i].src.split('/').pop();
+            skillElements[i].src = skillElements[i].src.replace(/(images\/)/, '$1skill1/');
           } else {
-            // 图片路径不变
-            skillElements[i].src = 'images/' + skillElements[i].src.split('/').pop();
+            // 移除 'skill1/' 或 'skill2/'
+            skillElements[i].src = skillElements[i].src.replace(/(images\/)(skill1\/|skill2\/)?/, '$1');
           }
         } else {
           // 修改图片路径为 /images/skill2/+原文件名
-          skillElements[i].src = 'images/skill2/' + skillElements[i].src.split('/').pop();
+          skillElements[i].src = skillElements[i].src.replace(/(images\/)/, '$1skill2/');
         }
       }
     }
