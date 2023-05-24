@@ -1,4 +1,7 @@
-var totalSkillPoints = 1199;  // 初始技能点数
+
+var initialSkillPoint = 1199
+
+var totalSkillPoints = initialSkillPoint;  // 初始技能点数
 
 function handleRightClick(event) {
     event.preventDefault();
@@ -128,20 +131,45 @@ function updateSkillIcons() {
         var currentLevel = skill.currentLevel;
         if (currentLevel === 0) {
           if (skill.prerequisite && skills[skill.prerequisite].currentLevel > 0) {
-            // 修改图片路径为 /images/skill1/+原文件名
-            skillElements[i].src = skillElements[i].src.replace(/(images\/)/, '$1skill1/');
+              // 移除 'skill1/' 或 'skill2/'
+              skillElements[i].src = skillElements[i].src.replace(/(images\/)(skill1\/|skill2\/)?/, '$1');
+              // 修改图片路径为 /images/skill1/+原文件名
+              skillElements[i].src = skillElements[i].src.replace(/(images\/)/, '$1skill1/');
+
           } else {
-            // 移除 'skill1/' 或 'skill2/'
-            skillElements[i].src = skillElements[i].src.replace(/(images\/)(skill1\/|skill2\/)?/, '$1');
+              // 移除 'skill1/' 或 'skill2/'
+              skillElements[i].src = skillElements[i].src.replace(/(images\/)(skill1\/|skill2\/)?/, '$1');
           }
         } else {
-          // 修改图片路径为 /images/skill2/+原文件名
-          skillElements[i].src = skillElements[i].src.replace(/(images\/)/, '$1skill2/');
+            // 移除 'skill1/' 或 'skill2/'
+            skillElements[i].src = skillElements[i].src.replace(/(images\/)(skill1\/|skill2\/)?/, '$1');
+            // 修改图片路径为 /images/skill2/+原文件名
+            skillElements[i].src = skillElements[i].src.replace(/(images\/)/, '$1skill2/');
+
         }
       }
     }
-  } 
-  
+  }
+  function refreshClick(){
+      totalSkillPoints = initialSkillPoint;
+
+      for (var key in skills) {
+          if (skills.hasOwnProperty(key)) {
+              var skill = skills[key];
+              skill.currentLevel = 0;
+
+          }
+      }
+
+      var levelIndicators = document.getElementsByClassName('level-indicator');
+      for (var i = 0; i < levelIndicators.length; i++) {
+          levelIndicators[i].textContent = '0';
+      }
+
+      updateSkillIcons(); // 更新技能图标
+      updatePointValue(); // 更新点数
+  }
+
 // function playFailAnimation(skillId) {
 //     var container = document.getElementById(skillId);
 //     container.classList.add('fail');

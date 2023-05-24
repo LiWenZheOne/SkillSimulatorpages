@@ -11,6 +11,9 @@ body {
     position: relative;
     /* 其他属性... */
 }
+.card-img {
+  position: relative;
+}
 
 .game-icon {
     position: absolute;
