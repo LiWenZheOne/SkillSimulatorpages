@@ -60,7 +60,6 @@ function iconClick(skillId) {
     if (skill.prerequisite) {
         var prerequisiteMet = false;
         var prerequisites = skill.prerequisite.split(',');
-        console.log(prerequisites)
 
         prerequisiteMet = prerequisites.some(function (prerequisite) {
             return skills[prerequisite] && skills[prerequisite].currentLevel > 0;
@@ -89,13 +88,8 @@ function iconClick(skillId) {
     }
 
     // 如果所有检查都通过，就可以升级这个技能
-    console.log(skillId+"当前技能信息"+skill.currentLevel )
     totalSkillPoints -= cost;
     skills[skillId].currentLevel++;
-    console.log("升级后技能信息"+skill.currentLevel )
-    // 更新m2-1图标的等级
-    // var levelElementId = skillId + '-level';
-    // document.getElementById(levelElementId).textContent = skill.currentLevel;
 
     syncSkillInfo(skill.skillid,skillId); // 同步技能信息
     updateSkillIcons(); // 更新技能图标
@@ -140,7 +134,6 @@ function iconRightClick(skillId, event) {
     });
     var hasUpgrade = nextSkills.some(s => s.currentLevel > 0);
     if (hasUpgrade && skill.currentLevel == 1) {
-        console.log("后续技能升级")
         playFailAnimation(skillId);
         playSound("fail");
         return;
@@ -179,8 +172,10 @@ function updateSkillIcons() {
         var skillId = skillElements[i].parentNode.id;
         var skill = skills[skillId];
         var levelElement = document.getElementById(skillId + '-level');
+
         if (levelElement && skill) {
             var currentLevel = skill.currentLevel;
+            var srcPath = skillElements[i].src;
             if (currentLevel === 0) {
                 // var prerequisites = Array.isArray(skill.prerequisite) ? skill.prerequisite : [skill.prerequisite];
                 if(skill.prerequisite){
@@ -192,21 +187,37 @@ function updateSkillIcons() {
                 }
 
                 if (hasPrerequisite && skill.prerequisite) {
-                    // 移除 'skill1/' 或 'skill2/'
-                    skillElements[i].src = skillElements[i].src.replace(/(images\/)(skill1\/|skill2\/)?/, '$1');
-                    // 修改图片路径为 /images/skill1/+原文件名
-                    skillElements[i].src = skillElements[i].src.replace(/(images\/)/, '$1skill1/');
+                    // // 移除 'skill1/' 或 'skill2/'
+                    // skillElements[i].src = skillElements[i].src.replace(/(images\/)(skill1\/|skill2\/)?/, '$1');
+                    // // 修改图片路径为 /images/skill1/+原文件名
+                    // skillElements[i].src = skillElements[i].src.replace(/(images\/)/, '$1skill1/');
+
+                    srcPath = srcPath.replace(/(images\/)(skill1\/|skill2\/)?/, '$1')
+                    srcPath = srcPath.replace(/(images\/)/, '$1skill1/');
+                    if (srcPath !== skillElements[i].src){
+                        skillElements[i].src = srcPath;
+                    }
 
                 } else {
                     // 移除 'skill1/' 或 'skill2/'
-                    skillElements[i].src = skillElements[i].src.replace(/(images\/)(skill1\/|skill2\/)?/, '$1');
+                    // skillElements[i].src = skillElements[i].src.replace(/(images\/)(skill1\/|skill2\/)?/, '$1');
+
+                    srcPath = srcPath.replace(/(images\/)(skill1\/|skill2\/)?/, '$1')
+                    if (srcPath !== skillElements[i].src){
+                        skillElements[i].src = srcPath;
+                    }
                 }
             } else {
                 // 移除 'skill1/' 或 'skill2/'
-                skillElements[i].src = skillElements[i].src.replace(/(images\/)(skill1\/|skill2\/)?/, '$1');
-                // 修改图片路径为 /images/skill2/+原文件名
-                skillElements[i].src = skillElements[i].src.replace(/(images\/)/, '$1skill2/');
+                // skillElements[i].src = skillElements[i].src.replace(/(images\/)(skill1\/|skill2\/)?/, '$1');
+                // // 修改图片路径为 /images/skill2/+原文件名
+                // skillElements[i].src = skillElements[i].src.replace(/(images\/)/, '$1skill2/');
 
+                srcPath = srcPath.replace(/(images\/)(skill1\/|skill2\/)?/, '$1')
+                srcPath = srcPath.replace(/(images\/)/, '$1skill2/');
+                if (srcPath !== skillElements[i].src){
+                    skillElements[i].src = srcPath;
+                }
             }
         }
     }
