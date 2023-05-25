@@ -11,399 +11,769 @@
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/script.js"></script>
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?05f7affa2c07d79acbb0c8d87fc22f37";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
     <script>
         var skills = {
             
             "m1-1": {
+                "skillid": "m1-1",
                 "currentLevel":  0 ,
                 "image": "images/m1-1.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
+                "baseCost":  5 ,
+                "increaseCost":  1 ,
+                "desc": "液体喷发",
                 "prerequisite": null
             },
             
             "m1-2": {
+                "skillid": "m1-2",
                 "currentLevel":  0 ,
                 "image": "images/m1-2.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
-                "prerequisite": null
+                "baseCost":  8 ,
+                "increaseCost":  1 ,
+                "desc": "寒冰领域",
+                "prerequisite": "m1-1"
             },
             
             "m1-3": {
+                "skillid": "m1-3",
                 "currentLevel":  0 ,
                 "image": "images/m1-3.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
-                "prerequisite": "m1-2"
+                "baseCost":  14 ,
+                "increaseCost":  2 ,
+                "desc": "水之壁障",
+                "prerequisite": "m1-2,m3-3"
             },
             
             "m1-4": {
+                "skillid": "m1-4",
                 "currentLevel":  0 ,
                 "image": "images/m1-4.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
-                "prerequisite": null
+                "baseCost":  16 ,
+                "increaseCost":  2 ,
+                "desc": "水神之触",
+                "prerequisite": "m0-4,m2-2"
             },
             
             "m1-5": {
+                "skillid": "m1-5",
                 "currentLevel":  0 ,
                 "image": "images/m1-5.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
+                "baseCost":  21 ,
+                "increaseCost":  2 ,
+                "desc": "治愈女神",
                 "prerequisite": "m1-4"
             },
             
             "m1-6": {
+                "skillid": "m1-6",
                 "currentLevel":  0 ,
                 "image": "images/m1-6.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
+                "baseCost":  30 ,
+                "increaseCost":  3 ,
+                "desc": "复活",
                 "prerequisite": "m1-5"
             },
             
             "m1-7": {
+                "skillid": "m1-7",
                 "currentLevel":  0 ,
                 "image": "images/m1-7.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
-                "prerequisite": null
+                "baseCost":  26 ,
+                "increaseCost":  2 ,
+                "desc": "诅咒净化",
+                "prerequisite": "m0-5"
             },
             
             "m1-8": {
+                "skillid": "m1-8",
                 "currentLevel":  0 ,
                 "image": "images/m1-8.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
-                "prerequisite": null
+                "baseCost":  26 ,
+                "increaseCost":  2 ,
+                "desc": "疾风冰矛",
+                "prerequisite": "m0-6"
             },
             
             "m1-9": {
+                "skillid": "m1-9",
                 "currentLevel":  0 ,
                 "image": "images/m1-9.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
-                "prerequisite": null
+                "baseCost":  32 ,
+                "increaseCost":  3 ,
+                "desc": "寒冰护甲",
+                "prerequisite": "m1-8"
             },
             
             "m1-10": {
+                "skillid": "m1-10",
                 "currentLevel":  0 ,
                 "image": "images/m1-10.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
-                "prerequisite": null
+                "baseCost":  36 ,
+                "increaseCost":  4 ,
+                "desc": "召唤水元素",
+                "prerequisite": "m1-9"
             },
             
             "m1-11": {
+                "skillid": "m1-11",
                 "currentLevel":  0 ,
                 "image": "images/m1-11.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
-                "prerequisite": null
+                "baseCost":  36 ,
+                "increaseCost":  4 ,
+                "desc": "约束喷泉",
+                "prerequisite": "m1-9"
             },
             
             "m1-12": {
+                "skillid": "m1-12",
                 "currentLevel":  0 ,
                 "image": "images/m1-6.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
-                "prerequisite": null
+                "baseCost":  30 ,
+                "increaseCost":  1 ,
+                "desc": "复活强化",
+                "prerequisite": "m1-10"
             },
             
             "m1-13": {
+                "skillid": "m1-13",
                 "currentLevel":  0 ,
                 "image": "images/m1-8.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
-                "prerequisite": null
+                "baseCost":  39 ,
+                "increaseCost":  1 ,
+                "desc": "疾风冰矛熟练度",
+                "prerequisite": "m1-8"
             },
             
             "m1-14": {
+                "skillid": "m1-14",
                 "currentLevel":  0 ,
                 "image": "images/m1-12.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
-                "prerequisite": null
+                "baseCost":  15 ,
+                "increaseCost":  2 ,
+                "desc": "冰冻地平线",
+                "prerequisite": "m1-12"
             },
             
             "m2-1": {
+                "skillid": "m2-1",
                 "currentLevel":  0 ,
                 "image": "images/m2-1.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
+                "baseCost":  5 ,
+                "increaseCost":  1 ,
+                "desc": "卡萨之箭",
                 "prerequisite": null
             },
             
             "m2-2": {
+                "skillid": "m2-2",
                 "currentLevel":  0 ,
                 "image": "images/m2-2.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
+                "baseCost":  12 ,
+                "increaseCost":  1 ,
+                "desc": "火焰之触",
                 "prerequisite": "m2-1"
             },
             
             "m2-3": {
+                "skillid": "m2-3",
                 "currentLevel":  0 ,
                 "image": "images/m2-3.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
-                "prerequisite": null
+                "baseCost":  21 ,
+                "increaseCost":  2 ,
+                "desc": "地狱火海",
+                "prerequisite": "m0-4"
             },
             
             "m2-4": {
+                "skillid": "m2-4",
                 "currentLevel":  0 ,
                 "image": "images/m2-4.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
+                "baseCost":  25 ,
+                "increaseCost":  2 ,
+                "desc": "光耀之环",
                 "prerequisite": "m2-3"
             },
             
             "m2-5": {
+                "skillid": "m2-5",
                 "currentLevel":  0 ,
                 "image": "images/m2-5.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
-                "prerequisite": null
+                "baseCost":  32 ,
+                "increaseCost":  3 ,
+                "desc": "烈焰之矢",
+                "prerequisite": "m0-5"
             },
             
             "m2-6": {
+                "skillid": "m2-6",
                 "currentLevel":  0 ,
                 "image": "images/m2-6.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
-                "prerequisite": null
+                "baseCost":  36 ,
+                "increaseCost":  3 ,
+                "desc": "烈焰指",
+                "prerequisite": "m0-6"
             },
             
             "m2-7": {
+                "skillid": "m2-7",
                 "currentLevel":  0 ,
                 "image": "images/m2-7.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
+                "baseCost":  40 ,
+                "increaseCost":  4 ,
+                "desc": "召唤火元素",
                 "prerequisite": "m2-6"
             },
             
             "m2-8": {
+                "skillid": "m2-8",
                 "currentLevel":  0 ,
                 "image": "images/m2-8.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
+                "baseCost":  42 ,
+                "increaseCost":  4 ,
+                "desc": "赤羽流焰",
                 "prerequisite": "m2-7"
             },
             
             "m2-9": {
+                "skillid": "m2-9",
                 "currentLevel":  0 ,
                 "image": "images/m2-9.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
+                "baseCost":  52 ,
                 "increaseCost":  5 ,
+                "desc": "地狱火",
                 "prerequisite": "m2-8"
             },
             
             "m2-10": {
+                "skillid": "m2-10",
                 "currentLevel":  0 ,
                 "image": "images/m2-8.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
+                "baseCost":  39 ,
+                "increaseCost":  1 ,
+                "desc": "赤羽流焰熟练度",
                 "prerequisite": "m2-8"
             },
             
             "m2-11": {
+                "skillid": "m2-11",
                 "currentLevel":  0 ,
                 "image": "images/m2-10.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
+                "baseCost":  15 ,
+                "increaseCost":  2 ,
+                "desc": "召唤-miga",
                 "prerequisite": "m2-9"
             },
             
             "m3-1": {
+                "skillid": "m3-1",
                 "currentLevel":  0 ,
                 "image": "images/m3-1.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
+                "baseCost":  5 ,
+                "increaseCost":  1 ,
+                "desc": "致命打击",
                 "prerequisite": null
             },
             
             "m3-2": {
+                "skillid": "m3-2",
                 "currentLevel":  0 ,
                 "image": "images/m3-2.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
-                "prerequisite": null
+                "baseCost":  13 ,
+                "increaseCost":  1 ,
+                "desc": "蔓藤",
+                "prerequisite": "m3-1"
             },
             
             "m3-3": {
+                "skillid": "m3-3",
                 "currentLevel":  0 ,
                 "image": "images/m3-3.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
-                "prerequisite": null
+                "baseCost":  15 ,
+                "increaseCost":  1 ,
+                "desc": "真实视野",
+                "prerequisite": "m3-2,m0-3,m1-2"
             },
             
             "m3-4": {
+                "skillid": "m3-4",
                 "currentLevel":  0 ,
                 "image": "images/m3-4.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
-                "prerequisite": null
+                "baseCost":  15 ,
+                "increaseCost":  1 ,
+                "desc": "石钻冲击",
+                "prerequisite": "m3-3"
             },
             
             "m3-5": {
+                "skillid": "m3-5",
                 "currentLevel":  0 ,
                 "image": "images/m3-5.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
-                "prerequisite": null
+                "baseCost":  20 ,
+                "increaseCost":  2 ,
+                "desc": "净化之息",
+                "prerequisite": "m0-4"
             },
             
             "m3-6": {
+                "skillid": "m3-6",
                 "currentLevel":  0 ,
                 "image": "images/m3-6.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
-                "prerequisite": null
+                "baseCost":  32 ,
+                "increaseCost":  3 ,
+                "desc": "大地之牙",
+                "prerequisite": "m0-5"
             },
             
             "m3-7": {
+                "skillid": "m3-7",
                 "currentLevel":  0 ,
                 "image": "images/m3-7.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
-                "prerequisite": null
+                "baseCost":  31 ,
+                "increaseCost":  3 ,
+                "desc": "大地护甲",
+                "prerequisite": "m0-6"
             },
             
             "m3-8": {
+                "skillid": "m3-8",
                 "currentLevel":  0 ,
                 "image": "images/m3-7.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
-                "prerequisite": null
+                "baseCost":  39 ,
+                "increaseCost":  1 ,
+                "desc": "大地护甲熟练度",
+                "prerequisite": "m3-7"
             },
             
             "m3-9": {
+                "skillid": "m3-9",
                 "currentLevel":  0 ,
                 "image": "images/m3-8.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
-                "prerequisite": null
+                "baseCost":  40 ,
+                "increaseCost":  4 ,
+                "desc": "大地祝福",
+                "prerequisite": "m3-7"
             },
             
             "m3-10": {
+                "skillid": "m3-10",
                 "currentLevel":  0 ,
                 "image": "images/m3-9.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
-                "prerequisite": null
+                "baseCost":  42 ,
+                "increaseCost":  4 ,
+                "desc": "神耀印记",
+                "prerequisite": "m3-9"
             },
             
             "m3-11": {
+                "skillid": "m3-11",
                 "currentLevel":  0 ,
                 "image": "images/m3-10.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
+                "baseCost":  52 ,
                 "increaseCost":  5 ,
-                "prerequisite": null
+                "desc": "流星雨",
+                "prerequisite": "m3-10"
             },
             
             "m3-12": {
+                "skillid": "m3-12",
                 "currentLevel":  0 ,
                 "image": "images/m3-11.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
-                "prerequisite": null
+                "baseCost":  15 ,
+                "increaseCost":  2 ,
+                "desc": "大地之怒",
+                "prerequisite": "m3-11"
             },
             
             "m0-3": {
+                "skillid": "m0-3",
                 "currentLevel":  0 ,
                 "image": "images/m0-3.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
-                "prerequisite": null
+                "baseCost":  5 ,
+                "increaseCost":  1 ,
+                "desc": "神之精灵",
+                "prerequisite": "m3-1,m1-1"
             },
             
             "m0-4": {
+                "skillid": "m0-4",
                 "currentLevel":  0 ,
                 "image": "images/m0-4.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
-                "prerequisite": null
+                "baseCost":  12 ,
+                "increaseCost":  1 ,
+                "desc": "灵魂漂流",
+                "prerequisite": "m3-4,m2-2,m1-3"
             },
             
             "m0-5": {
+                "skillid": "m0-5",
                 "currentLevel":  0 ,
                 "image": "images/m0-5.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
-                "prerequisite": null
+                "baseCost":  21 ,
+                "increaseCost":  2 ,
+                "desc": "瞬间移动",
+                "prerequisite": "m3-5,m1-6,m2-4"
             },
             
             "m0-6": {
+                "skillid": "m0-6",
                 "currentLevel":  0 ,
                 "image": "images/m0-6.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
-                "prerequisite": null
+                "baseCost":  30 ,
+                "increaseCost":  3 ,
+                "desc": "魔法暴击",
+                "prerequisite": "m1-7,m2-5,m3-6"
             },
             
             "z1": {
+                "skillid": "z1",
                 "currentLevel":  0 ,
                 "image": "images/z1.png",
                 "maxLevel":  30 ,
-                "baseCost":  10 ,
-                "increaseCost":  5 ,
+                "baseCost":  5 ,
+                "increaseCost":  1 ,
+                "desc": "活跃攻击",
                 "prerequisite": null
+            },
+            
+            "z2": {
+                "skillid": "z2",
+                "currentLevel":  0 ,
+                "image": "images/z2.png",
+                "maxLevel":  30 ,
+                "baseCost":  10 ,
+                "increaseCost":  1 ,
+                "desc": "回避术",
+                "prerequisite": "z1"
+            },
+            
+            "zm03": {
+                "skillid": "m0-3",
+                "currentLevel":  0 ,
+                "image": "images/m0-3.png",
+                "maxLevel":  30 ,
+                "baseCost":  5 ,
+                "increaseCost":  1 ,
+                "desc": "神之精灵zs",
+                "prerequisite": "z1"
+            },
+            
+            "z3": {
+                "skillid": "z3",
+                "currentLevel":  0 ,
+                "image": "images/z3.png",
+                "maxLevel":  30 ,
+                "baseCost":  8 ,
+                "increaseCost":  2 ,
+                "desc": "旋风烈斩",
+                "prerequisite": "zm03"
+            },
+            
+            "z4": {
+                "skillid": "z4",
+                "currentLevel":  0 ,
+                "image": "images/z4.png",
+                "maxLevel":  30 ,
+                "baseCost":  12 ,
+                "increaseCost":  3 ,
+                "desc": "防御崩坏",
+                "prerequisite": "z3"
+            },
+            
+            "z5": {
+                "skillid": "z5",
+                "currentLevel":  0 ,
+                "image": "images/z5.png",
+                "maxLevel":  30 ,
+                "baseCost":  10 ,
+                "increaseCost":  3 ,
+                "desc": "背刺",
+                "prerequisite": "z2"
+            },
+            
+            "z6": {
+                "skillid": "z6",
+                "currentLevel":  0 ,
+                "image": "images/z6.png",
+                "maxLevel":  1 ,
+                "baseCost":  14 ,
+                "increaseCost":  0 ,
+                "desc": "火之灵石",
+                "prerequisite": "z2,zm03,z3"
+            },
+            
+            "z7": {
+                "skillid": "z7",
+                "currentLevel":  0 ,
+                "image": "images/z7.png",
+                "maxLevel":  1 ,
+                "baseCost":  18 ,
+                "increaseCost":  0 ,
+                "desc": "眩晕",
+                "prerequisite": "z4"
+            },
+            
+            "z8": {
+                "skillid": "z8",
+                "currentLevel":  0 ,
+                "image": "images/z8.png",
+                "maxLevel":  30 ,
+                "baseCost":  17 ,
+                "increaseCost":  3 ,
+                "desc": "十字护卫",
+                "prerequisite": "z5"
+            },
+            
+            "zm05": {
+                "skillid": "m0-5",
+                "currentLevel":  0 ,
+                "image": "images/m0-5.png",
+                "maxLevel":  30 ,
+                "baseCost":  21 ,
+                "increaseCost":  2 ,
+                "desc": "瞬间移动",
+                "prerequisite": "z6,z8"
+            },
+            
+            "z9": {
+                "skillid": "z9",
+                "currentLevel":  0 ,
+                "image": "images/z9.png",
+                "maxLevel":  1 ,
+                "baseCost":  35 ,
+                "increaseCost":  0 ,
+                "desc": "沙之灵石",
+                "prerequisite": "zm05"
+            },
+            
+            "z10": {
+                "skillid": "z10",
+                "currentLevel":  0 ,
+                "image": "images/z10.png",
+                "maxLevel":  30 ,
+                "baseCost":  42 ,
+                "increaseCost":  3 ,
+                "desc": "伽马斩",
+                "prerequisite": "z9,z7,z12"
+            },
+            
+            "z11": {
+                "skillid": "z11",
+                "currentLevel":  0 ,
+                "image": "images/z11.png",
+                "maxLevel":  1 ,
+                "baseCost":  35 ,
+                "increaseCost":  0 ,
+                "desc": "冰之灵石",
+                "prerequisite": "zm05"
+            },
+            
+            "z12": {
+                "skillid": "z12",
+                "currentLevel":  0 ,
+                "image": "images/z12.png",
+                "maxLevel":  30 ,
+                "baseCost":  26 ,
+                "increaseCost":  2 ,
+                "desc": "精准打击",
+                "prerequisite": "zm05"
+            },
+            
+            "z13": {
+                "skillid": "z13",
+                "currentLevel":  0 ,
+                "image": "images/z13.png",
+                "maxLevel":  1 ,
+                "baseCost":  36 ,
+                "increaseCost":  0 ,
+                "desc": "水之祈祷",
+                "prerequisite": "z10"
+            },
+            
+            "z14": {
+                "skillid": "z14",
+                "currentLevel":  0 ,
+                "image": "images/z14.png",
+                "maxLevel":  30 ,
+                "baseCost":  36 ,
+                "increaseCost":  3 ,
+                "desc": "锐利之轮",
+                "prerequisite": "z11"
+            },
+            
+            "z15": {
+                "skillid": "z15",
+                "currentLevel":  0 ,
+                "image": "images/z15.png",
+                "maxLevel":  30 ,
+                "baseCost":  45 ,
+                "increaseCost":  4 ,
+                "desc": "致命爆发",
+                "prerequisite": "z14"
+            },
+            
+            "z16": {
+                "skillid": "z16",
+                "currentLevel":  0 ,
+                "image": "images/z16.png",
+                "maxLevel":  30 ,
+                "baseCost":  40 ,
+                "increaseCost":  3 ,
+                "desc": "回旋斩",
+                "prerequisite": "z11,z12"
+            },
+            
+            "z17": {
+                "skillid": "z17",
+                "currentLevel":  0 ,
+                "image": "images/z17.png",
+                "maxLevel":  1 ,
+                "baseCost":  36 ,
+                "increaseCost":  0 ,
+                "desc": "火之祈祷",
+                "prerequisite": "z15,z13"
+            },
+            
+            "z18": {
+                "skillid": "z18",
+                "currentLevel":  0 ,
+                "image": "images/z18.png",
+                "maxLevel":  30 ,
+                "baseCost":  46 ,
+                "increaseCost":  4 ,
+                "desc": "致残之蛇",
+                "prerequisite": "z13"
+            },
+            
+            "z19": {
+                "skillid": "z19",
+                "currentLevel":  0 ,
+                "image": "images/z19.png",
+                "maxLevel":  1 ,
+                "baseCost":  36 ,
+                "increaseCost":  0 ,
+                "desc": "沙之祈祷",
+                "prerequisite": "z15"
+            },
+            
+            "z20": {
+                "skillid": "z20",
+                "currentLevel":  0 ,
+                "image": "images/z20.png",
+                "maxLevel":  30 ,
+                "baseCost":  50 ,
+                "increaseCost":  5 ,
+                "desc": "光速冲刺",
+                "prerequisite": "z19"
+            },
+            
+            "z21": {
+                "skillid": "z21",
+                "currentLevel":  0 ,
+                "image": "images/z21.png",
+                "maxLevel":  30 ,
+                "baseCost":  56 ,
+                "increaseCost":  6 ,
+                "desc": "雷神斩",
+                "prerequisite": "z20,z17,z22"
+            },
+            
+            "z22": {
+                "skillid": "z22",
+                "currentLevel":  0 ,
+                "image": "images/z22.png",
+                "maxLevel":  30 ,
+                "baseCost":  52 ,
+                "increaseCost":  5 ,
+                "desc": "精灵之怒",
+                "prerequisite": "z18"
+            },
+            
+            "z23": {
+                "skillid": "z23",
+                "currentLevel":  0 ,
+                "image": "images/z23.png",
+                "maxLevel":  30 ,
+                "baseCost":  39 ,
+                "increaseCost":  1 ,
+                "desc": "致命爆发熟练度",
+                "prerequisite": "z15"
+            },
+            
+            "z24": {
+                "skillid": "z24",
+                "currentLevel":  0 ,
+                "image": "images/z24.png",
+                "maxLevel":  30 ,
+                "baseCost":  15 ,
+                "increaseCost":  2 ,
+                "desc": "尖锐冰雹",
+                "prerequisite": "z21"
+            },
+            
+            "z25": {
+                "skillid": "z25",
+                "currentLevel":  0 ,
+                "image": "images/z25.png",
+                "maxLevel":  30 ,
+                "baseCost":  39 ,
+                "increaseCost":  1 ,
+                "desc": "致残之蛇熟练度",
+                "prerequisite": "z18"
             },
             
         };
     </script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?05f7affa2c07d79acbb0c8d87fc22f37";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
     <style>
         .icon-container {
             position: relative;   
@@ -441,6 +811,10 @@ var _hmt = _hmt || [];
  
     <div class="empty-container" style="height: 60px;"></div>
 
+<audio id="click-success-sound" src="sound/success-jingle.wav" preload="auto"></audio>
+<audio id="click-fail-sound" src="sound/fail.wav" preload="auto"></audio>
+<audio id="click-back-sound" src="sound/back.ogg" preload="auto"></audio>
+
 <div class="container-fluid d-flex justify-content-center">
     <div class="card d-flex justify-content-center align-items-center"  data-bs-theme="dark"  style="width: 100rem;">
         <div class="card-body d-flex flex-column align-items-center justify-content-center" style="width: 100%;">
@@ -459,15 +833,15 @@ var _hmt = _hmt || [];
         <img class="game-icon" src="images/zhanfaskillist.jpg" alt="Load" style="object-fit: contain;">
         <div id="gameboard" oncontextmenu="handleRightClick(event)">
             
-            <div class="icon-container user-select-none" id="m1-1" style="
-                top:233px;
+            <div class="icon-container user-select-none m1-1" id="m1-1" style="
+                top:133px;
                 left:749px;">
 
                 <img class="game-icon" src="/images/m1-1.png" onclick="iconClick('m1-1')" onmouseover="showSkillInfo(event)" onmouseout="hideSkillInfo()" oncontextmenu="iconRightClick('m1-1', event)" draggable="false" />
                 <span class="level-indicator" id="m1-1-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m1-2" style="
+            <div class="icon-container user-select-none m1-2" id="m1-2" style="
                 top:228px;
                 left:836px;">
 
@@ -475,7 +849,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m1-2-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m1-3" style="
+            <div class="icon-container user-select-none m1-3" id="m1-3" style="
                 top:328px;
                 left:811px;">
 
@@ -483,7 +857,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m1-3-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m1-4" style="
+            <div class="icon-container user-select-none m1-4" id="m1-4" style="
                 top:378px;
                 left:1179px;">
 
@@ -491,7 +865,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m1-4-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m1-5" style="
+            <div class="icon-container user-select-none m1-5" id="m1-5" style="
                 top:428px;
                 left:1300px;">
 
@@ -499,7 +873,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m1-5-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m1-6" style="
+            <div class="icon-container user-select-none m1-6" id="m1-6" style="
                 top:513px;
                 left:1195px;">
 
@@ -507,7 +881,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m1-6-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m1-7" style="
+            <div class="icon-container user-select-none m1-7" id="m1-7" style="
                 top:604px;
                 left:944px;">
 
@@ -515,7 +889,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m1-7-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m1-8" style="
+            <div class="icon-container user-select-none m1-8" id="m1-8" style="
                 top:765px;
                 left:1148px;">
 
@@ -523,7 +897,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m1-8-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m1-9" style="
+            <div class="icon-container user-select-none m1-9" id="m1-9" style="
                 top:835px;
                 left:1241px;">
 
@@ -531,7 +905,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m1-9-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m1-10" style="
+            <div class="icon-container user-select-none m1-10" id="m1-10" style="
                 top:925px;
                 left:1209px;">
 
@@ -539,7 +913,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m1-10-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m1-11" style="
+            <div class="icon-container user-select-none m1-11" id="m1-11" style="
                 top:925px;
                 left:1325px;">
 
@@ -547,7 +921,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m1-11-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m1-12" style="
+            <div class="icon-container user-select-none m1-12" id="m1-12" style="
                 top:1025px;
                 left:1266px;">
 
@@ -555,7 +929,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m1-12-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m1-13" style="
+            <div class="icon-container user-select-none m1-13" id="m1-13" style="
                 top:1195px;
                 left:1148px;">
 
@@ -563,7 +937,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m1-13-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m1-14" style="
+            <div class="icon-container user-select-none m1-14" id="m1-14" style="
                 top:1285px;
                 left:1266px;">
 
@@ -571,7 +945,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m1-14-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m2-1" style="
+            <div class="icon-container user-select-none m2-1" id="m2-1" style="
                 top:43px;
                 left:1090px;">
 
@@ -579,7 +953,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m2-1-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m2-2" style="
+            <div class="icon-container user-select-none m2-2" id="m2-2" style="
                 top:222px;
                 left:1248px;">
 
@@ -587,7 +961,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m2-2-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m2-3" style="
+            <div class="icon-container user-select-none m2-3" id="m2-3" style="
                 top:422px;
                 left:892px;">
 
@@ -595,7 +969,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m2-3-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m2-4" style="
+            <div class="icon-container user-select-none m2-4" id="m2-4" style="
                 top:511px;
                 left:928px;">
 
@@ -603,7 +977,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m2-4-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m2-5" style="
+            <div class="icon-container user-select-none m2-5" id="m2-5" style="
                 top:629px;
                 left:1075px;">
 
@@ -611,7 +985,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m2-5-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m2-6" style="
+            <div class="icon-container user-select-none m2-6" id="m2-6" style="
                 top:824px;
                 left:992px;">
 
@@ -619,7 +993,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m2-6-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m2-7" style="
+            <div class="icon-container user-select-none m2-7" id="m2-7" style="
                 top:918px;
                 left:941px;">
 
@@ -627,7 +1001,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m2-7-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m2-8" style="
+            <div class="icon-container user-select-none m2-8" id="m2-8" style="
                 top:879px;
                 left:1083px;">
 
@@ -635,7 +1009,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m2-8-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m2-9" style="
+            <div class="icon-container user-select-none m2-9" id="m2-9" style="
                 top:1047px;
                 left:950px;">
 
@@ -643,7 +1017,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m2-9-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m2-10" style="
+            <div class="icon-container user-select-none m2-10" id="m2-10" style="
                 top:1192px;
                 left:1038px;">
 
@@ -651,7 +1025,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m2-10-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m2-11" style="
+            <div class="icon-container user-select-none m2-11" id="m2-11" style="
                 top:1283px;
                 left:950px;">
 
@@ -659,7 +1033,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m2-11-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m3-1" style="
+            <div class="icon-container user-select-none m3-1" id="m3-1" style="
                 top:120px;
                 left:987px;">
 
@@ -667,7 +1041,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m3-1-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m3-2" style="
+            <div class="icon-container user-select-none m3-2" id="m3-2" style="
                 top:148px;
                 left:1099px;">
 
@@ -675,7 +1049,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m3-2-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m3-3" style="
+            <div class="icon-container user-select-none m3-3" id="m3-3" style="
                 top:232px;
                 left:976px;">
 
@@ -683,7 +1057,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m3-3-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m3-4" style="
+            <div class="icon-container user-select-none m3-4" id="m3-4" style="
                 top:234px;
                 left:1105px;">
 
@@ -691,7 +1065,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m3-4-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m3-5" style="
+            <div class="icon-container user-select-none m3-5" id="m3-5" style="
                 top:438px;
                 left:1010px;">
 
@@ -699,7 +1073,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m3-5-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m3-6" style="
+            <div class="icon-container user-select-none m3-6" id="m3-6" style="
                 top:630px;
                 left:1207px;">
 
@@ -707,7 +1081,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m3-6-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m3-7" style="
+            <div class="icon-container user-select-none m3-7" id="m3-7" style="
                 top:774px;
                 left:852px;">
 
@@ -715,7 +1089,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m3-7-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m3-8" style="
+            <div class="icon-container user-select-none m3-8" id="m3-8" style="
                 top:1192px;
                 left:852px;">
 
@@ -723,7 +1097,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m3-8-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m3-9" style="
+            <div class="icon-container user-select-none m3-9" id="m3-9" style="
                 top:867px;
                 left:770px;">
 
@@ -731,7 +1105,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m3-9-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m3-10" style="
+            <div class="icon-container user-select-none m3-10" id="m3-10" style="
                 top:968px;
                 left:698px;">
 
@@ -739,7 +1113,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m3-10-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m3-11" style="
+            <div class="icon-container user-select-none m3-11" id="m3-11" style="
                 top:1046px;
                 left:793px;">
 
@@ -747,7 +1121,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m3-11-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m3-12" style="
+            <div class="icon-container user-select-none m3-12" id="m3-12" style="
                 top:1283px;
                 left:793px;">
 
@@ -755,7 +1129,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m3-12-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m0-3" style="
+            <div class="icon-container user-select-none m0-3" id="m0-3" style="
                 top:140px;
                 left:874px;">
 
@@ -763,7 +1137,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m0-3-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m0-4" style="
+            <div class="icon-container user-select-none m0-4" id="m0-4" style="
                 top:342px;
                 left:1043px;">
 
@@ -771,7 +1145,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m0-4-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m0-5" style="
+            <div class="icon-container user-select-none m0-5" id="m0-5" style="
                 top:529px;
                 left:1049px;">
 
@@ -779,7 +1153,7 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m0-5-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="m0-6" style="
+            <div class="icon-container user-select-none m0-6" id="m0-6" style="
                 top:731px;
                 left:1003px;">
 
@@ -787,479 +1161,236 @@ var _hmt = _hmt || [];
                 <span class="level-indicator" id="m0-6-level">0</span>
             </div>
             
-            <div class="icon-container user-select-none" id="z1" style="
-                top:0px;
-                left:0px;">
+            <div class="icon-container user-select-none z1" id="z1" style="
+                top:18px;
+                left:39px;">
 
                 <img class="game-icon" src="/images/z1.png" onclick="iconClick('z1')" onmouseover="showSkillInfo(event)" onmouseout="hideSkillInfo()" oncontextmenu="iconRightClick('z1', event)" draggable="false" />
                 <span class="level-indicator" id="z1-level">0</span>
             </div>
             
+            <div class="icon-container user-select-none z2" id="z2" style="
+                top:111px;
+                left:61px;">
+
+                <img class="game-icon" src="/images/z2.png" onclick="iconClick('z2')" onmouseover="showSkillInfo(event)" onmouseout="hideSkillInfo()" oncontextmenu="iconRightClick('z2', event)" draggable="false" />
+                <span class="level-indicator" id="z2-level">0</span>
+            </div>
+            
+            <div class="icon-container user-select-none m0-3" id="zm03" style="
+                top:103px;
+                left:156px;">
+
+                <img class="game-icon" src="/images/m0-3.png" onclick="iconClick('zm03')" onmouseover="showSkillInfo(event)" onmouseout="hideSkillInfo()" oncontextmenu="iconRightClick('zm03', event)" draggable="false" />
+                <span class="level-indicator" id="zm03-level">0</span>
+            </div>
+            
+            <div class="icon-container user-select-none z3" id="z3" style="
+                top:107px;
+                left:255px;">
+
+                <img class="game-icon" src="/images/z3.png" onclick="iconClick('z3')" onmouseover="showSkillInfo(event)" onmouseout="hideSkillInfo()" oncontextmenu="iconRightClick('z3', event)" draggable="false" />
+                <span class="level-indicator" id="z3-level">0</span>
+            </div>
+            
+            <div class="icon-container user-select-none z4" id="z4" style="
+                top:129px;
+                left:348px;">
+
+                <img class="game-icon" src="/images/z4.png" onclick="iconClick('z4')" onmouseover="showSkillInfo(event)" onmouseout="hideSkillInfo()" oncontextmenu="iconRightClick('z4', event)" draggable="false" />
+                <span class="level-indicator" id="z4-level">0</span>
+            </div>
+            
+            <div class="icon-container user-select-none z5" id="z5" style="
+                top:203px;
+                left:54px;">
+
+                <img class="game-icon" src="/images/z5.png" onclick="iconClick('z5')" onmouseover="showSkillInfo(event)" onmouseout="hideSkillInfo()" oncontextmenu="iconRightClick('z5', event)" draggable="false" />
+                <span class="level-indicator" id="z5-level">0</span>
+            </div>
+            
+            <div class="icon-container user-select-none z6" id="z6" style="
+                top:193px;
+                left:193px;">
+
+                <img class="game-icon" src="/images/z6.png" onclick="iconClick('z6')" onmouseover="showSkillInfo(event)" onmouseout="hideSkillInfo()" oncontextmenu="iconRightClick('z6', event)" draggable="false" />
+                <span class="level-indicator" id="z6-level">0</span>
+            </div>
+            
+            <div class="icon-container user-select-none z7" id="z7" style="
+                top:220px;
+                left:368px;">
+
+                <img class="game-icon" src="/images/z7.png" onclick="iconClick('z7')" onmouseover="showSkillInfo(event)" onmouseout="hideSkillInfo()" oncontextmenu="iconRightClick('z7', event)" draggable="false" />
+                <span class="level-indicator" id="z7-level">0</span>
+            </div>
+            
+            <div class="icon-container user-select-none z8" id="z8" style="
+                top:286px;
+                left:135px;">
+
+                <img class="game-icon" src="/images/z8.png" onclick="iconClick('z8')" onmouseover="showSkillInfo(event)" onmouseout="hideSkillInfo()" oncontextmenu="iconRightClick('z8', event)" draggable="false" />
+                <span class="level-indicator" id="z8-level">0</span>
+            </div>
+            
+            <div class="icon-container user-select-none m0-5" id="zm05" style="
+                top:279px;
+                left:239px;">
+
+                <img class="game-icon" src="/images/m0-5.png" onclick="iconClick('zm05')" onmouseover="showSkillInfo(event)" onmouseout="hideSkillInfo()" oncontextmenu="iconRightClick('zm05', event)" draggable="false" />
+                <span class="level-indicator" id="zm05-level">0</span>
+            </div>
+            
+            <div class="icon-container user-select-none z9" id="z9" style="
+                top:305px;
+                left:334px;">
+
+                <img class="game-icon" src="/images/z9.png" onclick="iconClick('z9')" onmouseover="showSkillInfo(event)" onmouseout="hideSkillInfo()" oncontextmenu="iconRightClick('z9', event)" draggable="false" />
+                <span class="level-indicator" id="z9-level">0</span>
+            </div>
+            
+            <div class="icon-container user-select-none z10" id="z10" style="
+                top:314px;
+                left:435px;">
+
+                <img class="game-icon" src="/images/z10.png" onclick="iconClick('z10')" onmouseover="showSkillInfo(event)" onmouseout="hideSkillInfo()" oncontextmenu="iconRightClick('z10', event)" draggable="false" />
+                <span class="level-indicator" id="z10-level">0</span>
+            </div>
+            
+            <div class="icon-container user-select-none z11" id="z11" style="
+                top:374px;
+                left:169px;">
+
+                <img class="game-icon" src="/images/z11.png" onclick="iconClick('z11')" onmouseover="showSkillInfo(event)" onmouseout="hideSkillInfo()" oncontextmenu="iconRightClick('z11', event)" draggable="false" />
+                <span class="level-indicator" id="z11-level">0</span>
+            </div>
+            
+            <div class="icon-container user-select-none z12" id="z12" style="
+                top:394px;
+                left:280px;">
+
+                <img class="game-icon" src="/images/z12.png" onclick="iconClick('z12')" onmouseover="showSkillInfo(event)" onmouseout="hideSkillInfo()" oncontextmenu="iconRightClick('z12', event)" draggable="false" />
+                <span class="level-indicator" id="z12-level">0</span>
+            </div>
+            
+            <div class="icon-container user-select-none z13" id="z13" style="
+                top:416px;
+                left:423px;">
+
+                <img class="game-icon" src="/images/z13.png" onclick="iconClick('z13')" onmouseover="showSkillInfo(event)" onmouseout="hideSkillInfo()" oncontextmenu="iconRightClick('z13', event)" draggable="false" />
+                <span class="level-indicator" id="z13-level">0</span>
+            </div>
+            
+            <div class="icon-container user-select-none z14" id="z14" style="
+                top:424px;
+                left:79px;">
+
+                <img class="game-icon" src="/images/z14.png" onclick="iconClick('z14')" onmouseover="showSkillInfo(event)" onmouseout="hideSkillInfo()" oncontextmenu="iconRightClick('z14', event)" draggable="false" />
+                <span class="level-indicator" id="z14-level">0</span>
+            </div>
+            
+            <div class="icon-container user-select-none z15" id="z15" style="
+                top:514px;
+                left:154px;">
+
+                <img class="game-icon" src="/images/z15.png" onclick="iconClick('z15')" onmouseover="showSkillInfo(event)" onmouseout="hideSkillInfo()" oncontextmenu="iconRightClick('z15', event)" draggable="false" />
+                <span class="level-indicator" id="z15-level">0</span>
+            </div>
+            
+            <div class="icon-container user-select-none z16" id="z16" style="
+                top:484px;
+                left:259px;">
+
+                <img class="game-icon" src="/images/z16.png" onclick="iconClick('z16')" onmouseover="showSkillInfo(event)" onmouseout="hideSkillInfo()" oncontextmenu="iconRightClick('z16', event)" draggable="false" />
+                <span class="level-indicator" id="z16-level">0</span>
+            </div>
+            
+            <div class="icon-container user-select-none z17" id="z17" style="
+                top:558px;
+                left:343px;">
+
+                <img class="game-icon" src="/images/z17.png" onclick="iconClick('z17')" onmouseover="showSkillInfo(event)" onmouseout="hideSkillInfo()" oncontextmenu="iconRightClick('z17', event)" draggable="false" />
+                <span class="level-indicator" id="z17-level">0</span>
+            </div>
+            
+            <div class="icon-container user-select-none z18" id="z18" style="
+                top:501px;
+                left:539px;">
+
+                <img class="game-icon" src="/images/z18.png" onclick="iconClick('z18')" onmouseover="showSkillInfo(event)" onmouseout="hideSkillInfo()" oncontextmenu="iconRightClick('z18', event)" draggable="false" />
+                <span class="level-indicator" id="z18-level">0</span>
+            </div>
+            
+            <div class="icon-container user-select-none z19" id="z19" style="
+                top:607px;
+                left:99px;">
+
+                <img class="game-icon" src="/images/z19.png" onclick="iconClick('z19')" onmouseover="showSkillInfo(event)" onmouseout="hideSkillInfo()" oncontextmenu="iconRightClick('z19', event)" draggable="false" />
+                <span class="level-indicator" id="z19-level">0</span>
+            </div>
+            
+            <div class="icon-container user-select-none z20" id="z20" style="
+                top:605px;
+                left:256px;">
+
+                <img class="game-icon" src="/images/z20.png" onclick="iconClick('z20')" onmouseover="showSkillInfo(event)" onmouseout="hideSkillInfo()" oncontextmenu="iconRightClick('z20', event)" draggable="false" />
+                <span class="level-indicator" id="z20-level">0</span>
+            </div>
+            
+            <div class="icon-container user-select-none z21" id="z21" style="
+                top:662px;
+                left:364px;">
+
+                <img class="game-icon" src="/images/z21.png" onclick="iconClick('z21')" onmouseover="showSkillInfo(event)" onmouseout="hideSkillInfo()" oncontextmenu="iconRightClick('z21', event)" draggable="false" />
+                <span class="level-indicator" id="z21-level">0</span>
+            </div>
+            
+            <div class="icon-container user-select-none z22" id="z22" style="
+                top:600px;
+                left:456px;">
+
+                <img class="game-icon" src="/images/z22.png" onclick="iconClick('z22')" onmouseover="showSkillInfo(event)" onmouseout="hideSkillInfo()" oncontextmenu="iconRightClick('z22', event)" draggable="false" />
+                <span class="level-indicator" id="z22-level">0</span>
+            </div>
+            
+            <div class="icon-container user-select-none z23" id="z23" style="
+                top:753px;
+                left:154px;">
+
+                <img class="game-icon" src="/images/z23.png" onclick="iconClick('z23')" onmouseover="showSkillInfo(event)" onmouseout="hideSkillInfo()" oncontextmenu="iconRightClick('z23', event)" draggable="false" />
+                <span class="level-indicator" id="z23-level">0</span>
+            </div>
+            
+            <div class="icon-container user-select-none z24" id="z24" style="
+                top:836px;
+                left:364px;">
+
+                <img class="game-icon" src="/images/z24.png" onclick="iconClick('z24')" onmouseover="showSkillInfo(event)" onmouseout="hideSkillInfo()" oncontextmenu="iconRightClick('z24', event)" draggable="false" />
+                <span class="level-indicator" id="z24-level">0</span>
+            </div>
+            
+            <div class="icon-container user-select-none z25" id="z25" style="
+                top:752px;
+                left:538px;">
+
+                <img class="game-icon" src="/images/z25.png" onclick="iconClick('z25')" onmouseover="showSkillInfo(event)" onmouseout="hideSkillInfo()" oncontextmenu="iconRightClick('z25', event)" draggable="false" />
+                <span class="level-indicator" id="z25-level">0</span>
+            </div>
+            
         </div>
     </div>
+
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <div id="skill-info-card" class="card" style="display: none;">
     <div class="card-body">
-        <p id="skill-name">Skill Name</p>
-        <small id="skill-baseCost">Skill baseCost</small>
-        <small id="skill-cost">Skill cost</small>
-        <small id="skill-level">Skill level</small>
+        <small id="skill-name">Skill Name</small><br>
+        <small id="gb-skill-baseCost">学习消耗 <span id="skill-baseCost"></span></small><br>
+        <small id="gb-skill-cost">升级点数 <span id="skill-cost"></span></small><br>
+        <small id="gb-skill-level">当前等级 <span id="skill-level"></span></small>
     </div>
 </div>
- 
+
 
 </body>
 </html>

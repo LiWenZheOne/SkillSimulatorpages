@@ -28,9 +28,28 @@ body {
   background-color: #808080;
   padding: 10px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  opacity: 0.7;
+  opacity: 0.9;
   color: white;
 }
+
+#skill-name {
+  font-size: 20px;
+  color: #079bd2;
+  font-weight: bold;
+  text-align: center;
+}
+/*#skill-baseCost {*/
+/*  font-size: 18px;*/
+/*  color: green;*/
+/*}*/
+/*#skill-cost {*/
+/*  font-size: 16px;*/
+/*  color: blue;*/
+/*}*/
+/*#skill-level {*/
+/*  font-size: 14px;*/
+/*  color: purple; */
+/*}*/
 
 .user-select-none {
     -webkit-user-select: none; /* Safari */

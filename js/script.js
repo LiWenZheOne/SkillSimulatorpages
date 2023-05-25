@@ -1,26 +1,30 @@
-
 var initialSkillPoint = 1199
 
 var totalSkillPoints = initialSkillPoint;  // 初始技能点数
 
 function handleRightClick(event) {
     event.preventDefault();
-    // 你的处理代码...
-    console.log('右键被点击了');
 }
+
 // 页面加载完成时执行初始化
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     updatePointValue();
 });
 
 function showSkillInfo(event) {
-    // 获取技能信息
-    var skillName = "Skill Name";
-    var skillDescription = "Skill Description";
+    // 获取当前悬停的元素和它的ID
+    var targetElement = event.target;
+    var skillId = event.target.getAttribute('onclick').split("'")[1];
+    // 从skills对象中获取技能信息
+    var skill = skills[skillId];
+    var skillDescription = skills[skillId].desc;
+    var baseCost = skills[skillId].baseCost;
+    var increaseCost = skills[skillId].increaseCost;
+    var currentLevel = skills[skillId].currentLevel;
 
     // 获取卡片元素和鼠标位置
     var skillInfoCard = document.getElementById("skill-info-card");
-    var mouseX = event.clientX + 30;
+    var mouseX = event.clientX + 50;
     var mouseY = event.clientY;
 
     // 更新卡片内容和位置
@@ -29,60 +33,76 @@ function showSkillInfo(event) {
     var skillCostElement = document.getElementById("skill-cost");
     var skillLevelElement = document.getElementById("skill-level");
 
-    skillNameElement.textContent = skillName;
+    skillNameElement.textContent = skillDescription;
+    skillBaseCostElement.textContent = baseCost;
+    skillCostElement.textContent = increaseCost;
+    skillLevelElement.textContent = currentLevel;
 
     skillInfoCard.style.display = "block";
     skillInfoCard.style.left = mouseX + "px";
     skillInfoCard.style.top = mouseY + "px";
 }
 
+
 function hideSkillInfo() {
     var skillInfoCard = document.getElementById("skill-info-card");
     skillInfoCard.style.display = "none";
-    console.log('鼠标离开技能'  );
 }
 
 function iconClick(skillId) {
 
     var skill = skills[skillId];
-    if (skill.prerequisite && skills[skill.prerequisite].currentLevel == 0) {
-        console.log('你需要先学习前置技能：' + skill.prerequisite);
-        playFailAnimation(skillId);
-        return;
+    // if (skill.prerequisite && skills[skill.prerequisite].currentLevel == 0) {
+    //     playSound("fail");
+    //     playFailAnimation(skillId);
+    //     return;
+    // }
+    if (skill.prerequisite) {
+        var prerequisiteMet = false;
+        var prerequisites = skill.prerequisite.split(',');
+        console.log(prerequisites)
+
+        prerequisiteMet = prerequisites.some(function (prerequisite) {
+            return skills[prerequisite] && skills[prerequisite].currentLevel > 0;
+        });
+        // 如果没有满足的前置技能，则播放失败的声音和动画
+        if (!prerequisiteMet) {
+            console.log("先学前置")
+            playSound("fail");
+            playFailAnimation(skillId);
+            return;
+        }
     }
-    
+    console.log(skill)
+
     var cost = skill.currentLevel === 0 ? skill.baseCost : skill.increaseCost;
     if (totalSkillPoints < cost) {
-        console.log('技能点数不足，无法升级此技能');
+        playSound("fail");
         playFailAnimation(skillId);
         return;
     }
-    
+
     if (skill.currentLevel >= skill.maxLevel) {
-        console.log('此技能已达到最高等级');
+        playSound("success");
         playFailAnimation(skillId);
         return;
-    } 
+    }
 
     // 如果所有检查都通过，就可以升级这个技能
+    console.log(skillId+"当前技能信息"+skill.currentLevel )
     totalSkillPoints -= cost;
-    skill.currentLevel++;
+    skills[skillId].currentLevel++;
+    console.log("升级后技能信息"+skill.currentLevel )
     // 更新m2-1图标的等级
-    var levelElementId = skillId + '-level';
-    document.getElementById(levelElementId).textContent = skill.currentLevel;
+    // var levelElementId = skillId + '-level';
+    // document.getElementById(levelElementId).textContent = skill.currentLevel;
+
+    syncSkillInfo(skill.skillid,skillId); // 同步技能信息
     updateSkillIcons(); // 更新技能图标
     updatePointValue(); // 更新点数
-    console.log('你已成功升级' + skillId + '到等级' + skill.currentLevel);
-    console.log('剩余技能点数：' + totalSkillPoints);
+    playSound("success");
 
-    // var icon = document.getElementById(skillId).querySelector('.game-icon');
-    // icon.classList.add("active");
-  
-    // // 在 0.5 秒后移除 "active" 类，以便重置特效状态
-    // setTimeout(function() {
-    //   icon.classList.remove("active");
-    // }, 500);
-    
+    // 成功特效
     playSuccessAnimation(skillId)
 }
 
@@ -94,17 +114,35 @@ function iconRightClick(skillId, event) {
     if (skill.currentLevel === 0) {
         // 移除已学习类 
         playFailAnimation(skillId);
-        console.log('此技能当前等级已经为0');
+        playSound("fail");
         return;
     }
 
     var refundCost = skill.currentLevel === 1 ? skill.baseCost : skill.increaseCost;
 
     // 检查后续技能是否升级，如果有升级则无法降级
-    var nextSkills = Object.values(skills).filter(s => s.prerequisite === skillId);
+    // var nextSkills = Object.values(skills).filter(s => s.prerequisite === skillId);
+    // var hasUpgrade = nextSkills.some(s => s.currentLevel > 0);
+    // if (hasUpgrade && skill.currentLevel == 1) {
+    //     playSound("fail");
+    //     return;
+    // }
+
+// 检查后续技能是否升级，如果有升级则无法降级
+    var nextSkills = Object.values(skills).filter(s => {
+        // 如果 prerequisite 为空，直接返回 false
+        if (!s.prerequisite) {
+            return false;
+        }
+        var prerequisites = s.prerequisite.split(',');
+        // 检查 skillId 是否在 prerequisites 数组中
+        return prerequisites.includes(skillId);
+    });
     var hasUpgrade = nextSkills.some(s => s.currentLevel > 0);
     if (hasUpgrade && skill.currentLevel == 1) {
-        console.log('后续技能已经升级，无法降级此技能');
+        console.log("后续技能升级")
+        playFailAnimation(skillId);
+        playSound("fail");
         return;
     }
 
@@ -112,94 +150,132 @@ function iconRightClick(skillId, event) {
     skill.currentLevel--;
 
     // 更新技能图标的等级
-    var levelElementId = skillId + '-level';
-    document.getElementById(levelElementId).textContent = skill.currentLevel;
+    // var levelElementId = skillId + '-level';
+    // document.getElementById(levelElementId).textContent = skill.currentLevel;
+    syncSkillInfo(skill.skillid,skillId)
     updateSkillIcons(); // 更新技能图标
     updatePointValue(); // 更新点数
-    console.log('你已降级' + skillId + '到等级' + skill.currentLevel);
-    console.log('返还技能点数：' + refundCost);
-    console.log('剩余技能点数：' + totalSkillPoints);
+    playSound("back");
 }
 
-function updateSkillIcons() {   
+function syncSkillInfo(skillId,id) {
+    let matchingSkills = [];
+    for (let skill in skills) {
+        if (skills.hasOwnProperty(skill) && skills[skill].skillid === skillId) {
+            skills[skill].currentLevel = skills[id].currentLevel
+            var levelElementId = skill + '-level';
+            document.getElementById(levelElementId).textContent = skills[id].currentLevel;
+            matchingSkills.push(skills[skill]);
+        }
+    }
+
+    var skillLevelElement = document.getElementById("skill-level");
+    skillLevelElement.textContent = skills[id].currentLevel;
+}
+
+function updateSkillIcons() {
     var skillElements = document.querySelectorAll('.game-icon');
     for (var i = 0; i < skillElements.length; i++) {
-      var skillId = skillElements[i].parentNode.id;
-      var skill = skills[skillId];
-      var levelElement = document.getElementById(skillId + '-level');
-      if (levelElement && skill) {
-        var currentLevel = skill.currentLevel;
-        if (currentLevel === 0) {
-          if (skill.prerequisite && skills[skill.prerequisite].currentLevel > 0) {
-              // 移除 'skill1/' 或 'skill2/'
-              skillElements[i].src = skillElements[i].src.replace(/(images\/)(skill1\/|skill2\/)?/, '$1');
-              // 修改图片路径为 /images/skill1/+原文件名
-              skillElements[i].src = skillElements[i].src.replace(/(images\/)/, '$1skill1/');
+        var skillId = skillElements[i].parentNode.id;
+        var skill = skills[skillId];
+        var levelElement = document.getElementById(skillId + '-level');
+        if (levelElement && skill) {
+            var currentLevel = skill.currentLevel;
+            if (currentLevel === 0) {
+                // var prerequisites = Array.isArray(skill.prerequisite) ? skill.prerequisite : [skill.prerequisite];
+                if(skill.prerequisite){
+                    var prerequisites = skill.prerequisite.split(',');
+                    // 检查是否有满足的前置技能
+                    var hasPrerequisite = prerequisites.some(function (prerequisite) {
+                        return skills[prerequisite] && skills[prerequisite].currentLevel > 0;
+                    });
+                }
 
-          } else {
-              // 移除 'skill1/' 或 'skill2/'
-              skillElements[i].src = skillElements[i].src.replace(/(images\/)(skill1\/|skill2\/)?/, '$1');
-          }
-        } else {
-            // 移除 'skill1/' 或 'skill2/'
-            skillElements[i].src = skillElements[i].src.replace(/(images\/)(skill1\/|skill2\/)?/, '$1');
-            // 修改图片路径为 /images/skill2/+原文件名
-            skillElements[i].src = skillElements[i].src.replace(/(images\/)/, '$1skill2/');
+                if (hasPrerequisite && skill.prerequisite) {
+                    // 移除 'skill1/' 或 'skill2/'
+                    skillElements[i].src = skillElements[i].src.replace(/(images\/)(skill1\/|skill2\/)?/, '$1');
+                    // 修改图片路径为 /images/skill1/+原文件名
+                    skillElements[i].src = skillElements[i].src.replace(/(images\/)/, '$1skill1/');
+
+                } else {
+                    // 移除 'skill1/' 或 'skill2/'
+                    skillElements[i].src = skillElements[i].src.replace(/(images\/)(skill1\/|skill2\/)?/, '$1');
+                }
+            } else {
+                // 移除 'skill1/' 或 'skill2/'
+                skillElements[i].src = skillElements[i].src.replace(/(images\/)(skill1\/|skill2\/)?/, '$1');
+                // 修改图片路径为 /images/skill2/+原文件名
+                skillElements[i].src = skillElements[i].src.replace(/(images\/)/, '$1skill2/');
+
+            }
+        }
+    }
+}
+
+function refreshClick() {
+    totalSkillPoints = initialSkillPoint;
+
+    for (var key in skills) {
+        if (skills.hasOwnProperty(key)) {
+            var skill = skills[key];
+            skill.currentLevel = 0;
 
         }
-      }
     }
-  }
-  function refreshClick(){
-      totalSkillPoints = initialSkillPoint;
 
-      for (var key in skills) {
-          if (skills.hasOwnProperty(key)) {
-              var skill = skills[key];
-              skill.currentLevel = 0;
+    var levelIndicators = document.getElementsByClassName('level-indicator');
+    for (var i = 0; i < levelIndicators.length; i++) {
+        levelIndicators[i].textContent = '0';
+    }
 
-          }
-      }
+    updateSkillIcons(); // 更新技能图标
+    updatePointValue(); // 更新点数
+}
 
-      var levelIndicators = document.getElementsByClassName('level-indicator');
-      for (var i = 0; i < levelIndicators.length; i++) {
-          levelIndicators[i].textContent = '0';
-      }
-
-      updateSkillIcons(); // 更新技能图标
-      updatePointValue(); // 更新点数
-  }
-
-// function playFailAnimation(skillId) {
-//     var container = document.getElementById(skillId);
-//     container.classList.add('fail');
-//     setTimeout(function() {
-//       container.classList.remove('fail');
-//     }, 500);
-//   }
-
-function playFailAnimation(skillId) { 
+function playFailAnimation(skillId) {
     var img = document.querySelector('#' + skillId + ' img');
     img.classList.add('fail-animation');
-    setTimeout(function() {
-      img.classList.remove('fail-animation');
+    setTimeout(function () {
+        img.classList.remove('fail-animation');
     }, 200);
-  }
-  
-  
-  function playSuccessAnimation(skillId) { 
+}
+
+
+function playSuccessAnimation(skillId) {
     var img = document.querySelector('#' + skillId + ' img');
     img.classList.add('flash');
-    setTimeout(function() {
-      img.classList.remove('flash');
+    setTimeout(function () {
+        img.classList.remove('flash');
     }, 200);
-  }
-  
-  function updatePointValue(){
-      // 获取对元素的引用
-      var pointsValueElement = document.getElementById("points-value");
+}
 
-      // 更新内容
-      pointsValueElement.textContent = totalSkillPoints;
-      console.log('更新页面点数：' + pointsValueElement.textContent);
-  }
+function updatePointValue() {
+    // 获取对元素的引用
+    var pointsValueElement = document.getElementById("points-value");
+
+    // 更新内容
+    pointsValueElement.textContent = totalSkillPoints;
+
+}
+
+function playSound(type) {
+    if (type == "success") {
+        var sound = document.getElementById('click-success-sound');
+        sound.currentTime = 0;
+        sound.play();
+    } else {
+        var sound = document.getElementById('click-back-sound');
+        sound.currentTime = 0;
+        sound.play();
+    }
+    // if(type=="back"){
+    //     var sound = document.getElementById('click-back-sound');
+    //     sound.currentTime = 0;
+    //     sound.play();
+    // }
+    // if(type=="fail"){
+    //     var sound = document.getElementById('click-fail-sound');
+    //     sound.currentTime = 0;
+    //     sound.play();
+    // }
+}
