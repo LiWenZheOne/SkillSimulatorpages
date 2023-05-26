@@ -3,7 +3,7 @@ var initialSkillPoint = 1199
 var totalSkillPoints = initialSkillPoint;  // 初始技能点数
 
 function handleRightClick(event) {
-    event.preventDefault();
+    event.preventDefault(); 
 }
 
 // 页面加载完成时执行初始化
@@ -24,8 +24,7 @@ function showSkillInfo(event) {
 
     // 获取卡片元素和鼠标位置
     var skillInfoCard = document.getElementById("skill-info-card");
-    var mouseX = event.clientX + 50;
-    var mouseY = event.clientY;
+    var targetRect = targetElement.getBoundingClientRect();
 
     // 更新卡片内容和位置
     var skillNameElement = document.getElementById("skill-name");
@@ -39,8 +38,8 @@ function showSkillInfo(event) {
     skillLevelElement.textContent = currentLevel;
 
     skillInfoCard.style.display = "block";
-    skillInfoCard.style.left = mouseX + "px";
-    skillInfoCard.style.top = mouseY + "px";
+    skillInfoCard.style.left = (targetRect.right + 10) + "px";
+    skillInfoCard.style.top = targetRect.top + "px";
 }
 
 
@@ -71,8 +70,7 @@ function iconClick(skillId) {
             playFailAnimation(skillId);
             return;
         }
-    }
-    console.log(skill)
+    } 
 
     var cost = skill.currentLevel === 0 ? skill.baseCost : skill.increaseCost;
     if (totalSkillPoints < cost) {
@@ -114,14 +112,6 @@ function iconRightClick(skillId, event) {
 
     var refundCost = skill.currentLevel === 1 ? skill.baseCost : skill.increaseCost;
 
-    // 检查后续技能是否升级，如果有升级则无法降级
-    // var nextSkills = Object.values(skills).filter(s => s.prerequisite === skillId);
-    // var hasUpgrade = nextSkills.some(s => s.currentLevel > 0);
-    // if (hasUpgrade && skill.currentLevel == 1) {
-    //     playSound("fail");
-    //     return;
-    // }
-
 // 检查后续技能是否升级，如果有升级则无法降级
     var nextSkills = Object.values(skills).filter(s => {
         // 如果 prerequisite 为空，直接返回 false
@@ -143,8 +133,6 @@ function iconRightClick(skillId, event) {
     skill.currentLevel--;
 
     // 更新技能图标的等级
-    // var levelElementId = skillId + '-level';
-    // document.getElementById(levelElementId).textContent = skill.currentLevel;
     syncSkillInfo(skill.skillid,skillId)
     updateSkillIcons(); // 更新技能图标
     updatePointValue(); // 更新点数
@@ -187,11 +175,6 @@ function updateSkillIcons() {
                 }
 
                 if (hasPrerequisite && skill.prerequisite) {
-                    // // 移除 'skill1/' 或 'skill2/'
-                    // skillElements[i].src = skillElements[i].src.replace(/(images\/)(skill1\/|skill2\/)?/, '$1');
-                    // // 修改图片路径为 /images/skill1/+原文件名
-                    // skillElements[i].src = skillElements[i].src.replace(/(images\/)/, '$1skill1/');
-
                     srcPath = srcPath.replace(/(images\/)(skill1\/|skill2\/)?/, '$1')
                     srcPath = srcPath.replace(/(images\/)/, '$1skill1/');
                     if (srcPath !== skillElements[i].src){
@@ -199,20 +182,12 @@ function updateSkillIcons() {
                     }
 
                 } else {
-                    // 移除 'skill1/' 或 'skill2/'
-                    // skillElements[i].src = skillElements[i].src.replace(/(images\/)(skill1\/|skill2\/)?/, '$1');
-
                     srcPath = srcPath.replace(/(images\/)(skill1\/|skill2\/)?/, '$1')
                     if (srcPath !== skillElements[i].src){
                         skillElements[i].src = srcPath;
                     }
                 }
             } else {
-                // 移除 'skill1/' 或 'skill2/'
-                // skillElements[i].src = skillElements[i].src.replace(/(images\/)(skill1\/|skill2\/)?/, '$1');
-                // // 修改图片路径为 /images/skill2/+原文件名
-                // skillElements[i].src = skillElements[i].src.replace(/(images\/)/, '$1skill2/');
-
                 srcPath = srcPath.replace(/(images\/)(skill1\/|skill2\/)?/, '$1')
                 srcPath = srcPath.replace(/(images\/)/, '$1skill2/');
                 if (srcPath !== skillElements[i].src){
@@ -279,14 +254,4 @@ function playSound(type) {
         sound.currentTime = 0;
         sound.play();
     }
-    // if(type=="back"){
-    //     var sound = document.getElementById('click-back-sound');
-    //     sound.currentTime = 0;
-    //     sound.play();
-    // }
-    // if(type=="fail"){
-    //     var sound = document.getElementById('click-fail-sound');
-    //     sound.currentTime = 0;
-    //     sound.play();
-    // }
 }
